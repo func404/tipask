@@ -824,6 +824,15 @@ class PermissionSeeder extends Seeder
                 'created_at'  => '2016-02-16 17:57:51',
                 'updated_at'  => '2016-02-16 17:57:51',
             ],
+            [
+                'id'          => '42',
+                'name'        => '后台广告任务明细管理',
+                'slug'        => 'admin.adtaskdetail.index',
+                'description' => '后台广告任务明细管理',
+                'created_at'  => '2016-02-16 17:57:51',
+                'updated_at'  => '2016-02-16 17:57:51',
+            ],
+
         ]);
 
         // 添加超级管理员、管理员、运营人员草稿管理权限
@@ -930,13 +939,6 @@ class PermissionSeeder extends Seeder
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
-            [
-                'id'            => '76',
-                'permission_id' => '39',
-                'role_id'       => '4',
-                'created_at'    => '2016-02-16 17:37:51',
-                'updated_at'    => '2016-04-16 17:57:51',
-            ],
 
             //添加广告素材管理权限数据
             [
@@ -975,13 +977,29 @@ class PermissionSeeder extends Seeder
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
+            // 任务明细管理
             [
                 'id'            => '82',
-                'permission_id' => '41',
+                'permission_id' => '42',
+                'role_id'       => '1',
+                'created_at'    => '2016-02-16 17:37:51',
+                'updated_at'    => '2016-04-16 17:57:51',
+            ],
+            [
+                'id'            => '83',
+                'permission_id' => '42',
+                'role_id'       => '3',
+                'created_at'    => '2016-02-16 17:37:51',
+                'updated_at'    => '2016-04-16 17:57:51',
+            ],
+            [
+                'id'            => '84',
+                'permission_id' => '42',
                 'role_id'       => '4',
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
+
         ]);
 
     }

@@ -71,8 +71,11 @@
              @if(Auth()->user()->hasPermission('admin.adimage.index'))
                 <li><a href="{{ route('admin.adimage.index') }}"><i class="fa fa-circle-o"></i> 广告素材管理</a></li>
             @endif
+            @if(Auth()->user()->hasPermission('admin.adtask.index'))
+                <li><a href="{{ route('admin.adtask.index') }}"><i class="fa fa-circle-o"></i>广告任务管理</a></li>
+            @endif
             @if(Auth()->user()->hasPermission('admin.user.index'))
-                <li><a href="{{ route('admin.user.index') }}"><i class="fa fa-circle-o"></i>广告任务管理</a></li>
+                <li><a href="{{ route('admin.user.index') }}"><i class="fa fa-circle-o"></i>广告明细管理</a></li>
             @endif
         </ul>
     </li>

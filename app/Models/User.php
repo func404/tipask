@@ -402,4 +402,29 @@ class User extends Authenticatable
         return '';
     }
 
+    /**
+     * 生成select下拉选择框
+     * @param $categories
+     * @param int $parentId
+     * @param int $depth
+     * @return string
+     */
+    public static function makeOptionTree($users, $selectId = 0, $depth = 0)
+    {
+        $childTree = '';
+        foreach ($users as $user) {
+
+            if ($user->id == $selectId) {
+                $childTree .= "<option value=\"{$user->id}\" selected>";
+            } else {
+                $childTree .= "<option value=\"{$user->id}\">";
+            }
+            $depthStr = str_repeat("--", $depth);
+            $childTree .= $depth ? "&nbsp;&nbsp;|{$depthStr}&nbsp;{$user->name}</option>" : "{$user->name}</option>";
+            // $childTree .= self::makeOptionTree($categories, $selectId, $category->id, $depth + 1);
+
+        }
+        return $childTree;
+    }
+
 }

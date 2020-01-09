@@ -367,6 +367,28 @@ if (!function_exists('make_option_platform')) {
 
 }
 
+/*数据库Category表操作*/
+if (!function_exists('make_option_position')) {
+
+    function make_option_position($type = 'all', $select_id = 0, $platform_id = 1)
+    {
+        $categories = app('App\Models\AdPosition')->select('id', 'mark')->where('platform_id', $platform_id)->get();
+        return app('App\Models\AdPosition')->makeOptionTree($categories, $select_id);
+    }
+
+}
+
+/*数据库Category表操作*/
+if (!function_exists('make_option_user')) {
+
+    function make_option_user($type = 'all', $select_id = 0)
+    {
+        $categories = app('App\Models\User')->select('users.id', 'users.name')->join('role_user', 'role_user.user_id', '=', 'users.id')->where('role_user.role_id', 4)->get();
+        return app('App\Models\User')->makeOptionTree($categories, $select_id);
+    }
+
+}
+
 /*生成分类Tab下拉数据格式*/
 if (!function_exists('get_category_tab_data')) {
 
