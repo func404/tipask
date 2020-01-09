@@ -47,6 +47,33 @@
         </ul>
     </li>
 
+     <li class="treeview">
+        <a href="#">
+            <i class="fa fa-users"></i> <span>平台</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu" id="platform_manage">
+            @if(Auth()->user()->hasPermission('admin.platform.index'))
+                <li><a href="{{ route('admin.platform.index') }}"><i class="fa fa-circle-o"></i>平台管理</a></li>
+            @endif
+        </ul>
+    </li>
+
+     <li class="treeview">
+        <a href="#">
+            <i class="fa fa-users"></i> <span>广告管理</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu" id="ad_manage">
+            @if(Auth()->user()->hasPermission('admin.user.index'))
+                <li><a href="{{ route('admin.user.index') }}"><i class="fa fa-circle-o"></i>广告任务管理</a></li>
+            @endif
+            @if(Auth()->user()->hasPermission('admin.authentication.index'))
+                <li><a href="{{ route('admin.authentication.index') }}"><i class="fa fa-circle-o"></i> 广告位管理</a></li>
+            @endif
+        </ul>
+    </li>
+
     <li class="treeview">
         <a href="#">
             <i class="fa fa-users"></i> <span>用户</span>
@@ -131,6 +158,7 @@
             @endif
         </ul>
     </li>
+
     <li class="treeview">
         <a href="#">
             <i class="fa fa-recycle"></i> <span>系统整合</span>

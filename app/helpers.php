@@ -18,7 +18,6 @@ if (!function_exists('trans_common_bool')) {
             return $map;
         }
 
-
         if (isset($map[$value])) {
             return $map[$value];
         }
@@ -41,7 +40,6 @@ if (!function_exists('trans_goods_post_type')) {
         if ($post_type === 'all') {
             return $map;
         }
-
 
         if (isset($map[$post_type])) {
             return $map[$post_type];
@@ -66,7 +64,6 @@ if (!function_exists('trans_gender_name')) {
         if ($post_type === 'all') {
             return $map;
         }
-
 
         if (isset($map[$post_type])) {
             return $map[$post_type];
@@ -93,7 +90,6 @@ if (!function_exists('trans_authentication_status')) {
             return $map;
         }
 
-
         if (isset($map[$status])) {
             return $map[$status];
         }
@@ -103,7 +99,6 @@ if (!function_exists('trans_authentication_status')) {
     }
 
 }
-
 
 /*公告状态文字定义*/
 if (!function_exists('trans_exchange_status')) {
@@ -119,7 +114,6 @@ if (!function_exists('trans_exchange_status')) {
         if ($status === 'all') {
             return $map;
         }
-
 
         if (isset($map[$status])) {
             return $map[$status];
@@ -137,15 +131,38 @@ if (!function_exists('trans_common_status')) {
     function trans_common_status($status)
     {
         $map = [
-            0 => '待审核',
-            1 => '已审核',
-            -1 => '已禁言'
+            0  => '待审核',
+            1  => '已审核',
+            -1 => '已禁言',
         ];
 
         if ($status === 'all') {
             return $map;
         }
 
+        if (isset($map[$status])) {
+            return $map[$status];
+        }
+
+        return '';
+
+    }
+
+}
+
+/*公告状态文字定义*/
+if (!function_exists('trans_common_disable')) {
+
+    function trans_common_disable($status)
+    {
+        $map = [
+            0 => '禁用',
+            1 => '可用',
+        ];
+
+        if ($status === 'all') {
+            return $map;
+        }
 
         if (isset($map[$status])) {
             return $map[$status];
@@ -164,14 +181,13 @@ if (!function_exists('trans_draft_type')) {
     {
         $map = [
             'question' => '提问',
-            'answer' => '回答',
-            'article' => '文章'
+            'answer'   => '回答',
+            'article'  => '文章',
         ];
 
         if ($type === 'all') {
             return $map;
         }
-
 
         if (isset($map[$type])) {
             return $map[$type];
@@ -191,7 +207,7 @@ if (!function_exists('trans_report_status')) {
         $map = [
             0 => '待处理',
             1 => '已处理',
-            4 => '已忽略'
+            4 => '已忽略',
         ];
 
         if ($status === 'all') {
@@ -239,7 +255,6 @@ if (!function_exists('trans_pay_status')) {
             return $map;
         }
 
-
         if (isset($map[$status])) {
             return $map[$status];
         }
@@ -250,7 +265,6 @@ if (!function_exists('trans_pay_status')) {
 
 }
 
-
 /*问题状态文本描述定义*/
 if (!function_exists('trans_question_status')) {
 
@@ -258,9 +272,9 @@ if (!function_exists('trans_question_status')) {
     {
         $map = [
             -1 => '待支付',
-            0 => '待审核',
-            1 => '待解决',
-            2 => '已解决',
+            0  => '待审核',
+            1  => '待解决',
+            2  => '已解决',
         ];
 
         if ($status === 'all') {
@@ -303,9 +317,6 @@ if (!function_exists('trans_day_of_week')) {
 
 }
 
-
-
-
 if (!function_exists('trans_question_price')) {
     function trans_question_price($price = 'all')
     {
@@ -313,7 +324,6 @@ if (!function_exists('trans_question_price')) {
         return $map;
     }
 }
-
 
 /*数据库setting表操作*/
 if (!function_exists('Setting')) {
@@ -324,7 +334,6 @@ if (!function_exists('Setting')) {
     }
 
 }
-
 
 /*数据库Category表操作*/
 if (!function_exists('load_categories')) {
@@ -352,20 +361,19 @@ if (!function_exists('get_category_tab_data')) {
 
     function get_category_tab_data($type = 'all', $size = 6)
     {
-        $categories = app('App\Models\Category')->loadFromCache($type);
+        $categories     = app('App\Models\Category')->loadFromCache($type);
         $rootCategories = [];
         foreach ($categories as $category) {
             if ($category->parent_id == 0) {
                 $rootCategories[] = $category;
             }
         }
-        $tabData['out_tabs'] = array_slice($rootCategories,0,$size);
-        $tabData['in_tabs'] = array_slice($rootCategories,$size);
+        $tabData['out_tabs'] = array_slice($rootCategories, 0, $size);
+        $tabData['in_tabs']  = array_slice($rootCategories, $size);
         return $tabData;
     }
 
 }
-
 
 /*数据库area地区表操作*/
 if (!function_exists('Area')) {
@@ -376,7 +384,6 @@ if (!function_exists('Area')) {
     }
 
 }
-
 
 /**
  * 将正整数转换为带+,例如 10 装换为 +10
@@ -407,11 +414,10 @@ if (!function_exists('get_credit_message')) {
     }
 }
 
-
 if (!function_exists('timestamp_format')) {
     function timestamp_format($timestamp, $showDateTime = true)
     {
-        $carbon = \Carbon\Carbon::instance(new DateTime($timestamp));
+        $carbon             = \Carbon\Carbon::instance(new DateTime($timestamp));
         $time_format_string = Setting()->get('date_format');
         if ($showDateTime) {
             $time_format_string .= ' ' . Setting()->get('time_format');
@@ -424,7 +430,6 @@ if (!function_exists('timestamp_format')) {
     }
 }
 
-
 if (!function_exists('parse_seo_template')) {
     function parse_seo_template($type, $source)
     {
@@ -434,7 +439,7 @@ if (!function_exists('parse_seo_template')) {
 
         if (str_contains($type, ['question', 'article'])) {
             if ($source->tags) {
-                $tagList = array_pluck($source->tags->toArray(), 'name');
+                $tagList      = array_pluck($source->tags->toArray(), 'name');
                 $seo_template = str_replace("{htlb}", implode(",", $tagList), $seo_template);
             }
         }
@@ -472,7 +477,6 @@ if (!function_exists('get_user_avatar')) {
     }
 }
 
-
 /*常见的正则判断*/
 
 /*邮箱判断*/
@@ -499,18 +503,16 @@ if (!function_exists('is_mobile')) {
     }
 }
 
-
 /*创建唯一订单号*/
 if (!function_exists('build_order_no')) {
     function build_order_no($user_id = 0)
     {
         $order_no = date('Ymd') . substr(implode(null, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
-        $salt = md5($user_id);
-        $star = strtoupper(substr($salt, 1, 5));
+        $salt     = md5($user_id);
+        $star     = strtoupper(substr($salt, 1, 5));
         return $order_no . $star;
     }
 }
-
 
 /*创建唯一订单号*/
 if (!function_exists('random_number')) {
@@ -521,7 +523,6 @@ if (!function_exists('random_number')) {
     }
 }
 
-
 /*金币转换元*/
 if (!function_exists('coins_to_cent')) {
     function coins_to_cent($coins)
@@ -529,7 +530,7 @@ if (!function_exists('coins_to_cent')) {
         /*获取1元能够吗多少个金币*/
         $charge_rage = config('pay.charge_rate');
         if ($charge_rage > 0 && $coins > 0) {
-            $rate = ceil(100 / $charge_rage); //计算单个金币的价格
+            $rate   = ceil(100 / $charge_rage); //计算单个金币的价格
             $result = $coins * $rate;
             return $result;
         }
@@ -549,7 +550,6 @@ if (!function_exists('yuan_to_coins')) {
     }
 }
 
-
 /*分转元*/
 if (!function_exists('cent_to_yuan')) {
     function cent_to_yuan($cent)
@@ -565,7 +565,6 @@ if (!function_exists('format_money')) {
     }
 }
 
-
 /*提取html内容中的img标签图片地址*/
 if (!function_exists('get_editor_images')) {
     function get_editor_images($content)
@@ -580,7 +579,6 @@ if (!function_exists('get_editor_images')) {
     }
 }
 
-
 if (!function_exists('env_cert')) {
     function env_cert($env_param)
     {
@@ -591,19 +589,3 @@ if (!function_exists('env_cert')) {
         return $cert_string;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
