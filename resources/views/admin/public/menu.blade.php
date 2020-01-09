@@ -65,11 +65,14 @@
             <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu" id="ad_manage">
+            @if(Auth()->user()->hasPermission('admin.adposition.index'))
+                <li><a href="{{ route('admin.adposition.index') }}"><i class="fa fa-circle-o"></i> 广告位管理</a></li>
+            @endif
+             @if(Auth()->user()->hasPermission('admin.adimage.index'))
+                <li><a href="{{ route('admin.adimage.index') }}"><i class="fa fa-circle-o"></i> 广告素材管理</a></li>
+            @endif
             @if(Auth()->user()->hasPermission('admin.user.index'))
                 <li><a href="{{ route('admin.user.index') }}"><i class="fa fa-circle-o"></i>广告任务管理</a></li>
-            @endif
-            @if(Auth()->user()->hasPermission('admin.authentication.index'))
-                <li><a href="{{ route('admin.authentication.index') }}"><i class="fa fa-circle-o"></i> 广告位管理</a></li>
             @endif
         </ul>
     </li>

@@ -356,6 +356,17 @@ if (!function_exists('make_option_tree')) {
 
 }
 
+/*数据库Category表操作*/
+if (!function_exists('make_option_platform')) {
+
+    function make_option_platform($type = 'all', $select_id = 0)
+    {
+        $categories = app('App\Models\Platform')->select('id', 'name')->get();
+        return app('App\Models\Platform')->makeOptionTree($categories, $select_id);
+    }
+
+}
+
 /*生成分类Tab下拉数据格式*/
 if (!function_exists('get_category_tab_data')) {
 
