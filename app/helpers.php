@@ -361,7 +361,7 @@ if (!function_exists('make_option_platform')) {
 
     function make_option_platform($type = 'all', $select_id = 0)
     {
-        $categories = app('App\Models\Platform')->select('id', 'name')->get();
+        $categories = app('App\Models\Platform')->select('id', 'name')->where('disable', '1')->orderBy('id', 'desc')->get();
         return app('App\Models\Platform')->makeOptionTree($categories, $select_id);
     }
 
@@ -370,10 +370,30 @@ if (!function_exists('make_option_platform')) {
 /*数据库Category表操作*/
 if (!function_exists('make_option_position')) {
 
-    function make_option_position($type = 'all', $select_id = 0, $platform_id = 1)
+    function make_option_position($type = 'all', $platform_id = 1, $task_id = 0)
     {
-        $categories = app('App\Models\AdPosition')->select('id', 'mark')->where('platform_id', $platform_id)->get();
-        return app('App\Models\AdPosition')->makeOptionTree($categories, $select_id);
+        $used_positons = app('App\Models\AdTaskDetail')->select('ad_task_position_id')->where('disable', 1)->get()->pluck('ad_task_position_id')->toArray() ?? [];
+
+        $categories = app('App\Models\AdPosition')->select('id', 'mark')->where('platform_id', $platform_id)->where('disable', 1);
+
+        if ($used_positons) {
+            $categories = $categories->whereNotIn('id', $used_positons);
+        }
+        $categories   = $categories->get();
+        $task_details = null;
+        if ($task_id) {
+            $date         = date('Y-m-d H:i:s');
+            $task_details = app('App\Models\AdPosition')
+                ->select('ad_task_details.ad_task_position_id')
+                ->join('ad_task_details', 'ad_task_details.ad_task_position_id', '=', 'ad_positions.id')
+                ->join('ad_task_logs', 'ad_task_logs.ad_task_id', '=', 'ad_task_details.ad_task_id')
+                ->join('ad_tasks', 'ad_tasks.ad_task_log_id', '=', 'ad_task_logs.id')
+                ->where('ad_task_logs.end', '>', $date)
+                ->where('ad_task_details.disable', 1)
+                ->where('ad_tasks.disable', 1)
+                ->get()->pluck('ad_task_position_id')->toArray() ?? null;
+        }
+        return app('App\Models\AdPosition')->makeOptionTree($categories, $task_details);
     }
 
 }
@@ -385,6 +405,17 @@ if (!function_exists('make_option_user')) {
     {
         $categories = app('App\Models\User')->select('users.id', 'users.name')->join('role_user', 'role_user.user_id', '=', 'users.id')->where('role_user.role_id', 4)->get();
         return app('App\Models\User')->makeOptionTree($categories, $select_id);
+    }
+
+}
+
+/*数据库Category表操作*/
+if (!function_exists('make_option_images')) {
+
+    function make_option_images($type = 'all', $select_id = 0)
+    {
+        $categories = app('App\Models\Adimage')->select('id', 'name')->where('disable', '1')->get();
+        return app('App\Models\Adimage')->makeOptionTree($categories, $select_id);
     }
 
 }

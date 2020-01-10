@@ -879,28 +879,6 @@ class PermissionSeeder extends Seeder
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
-            //添加平台管理权限数据
-            [
-                'id'            => '71',
-                'permission_id' => '38',
-                'role_id'       => '1',
-                'created_at'    => '2016-02-16 17:37:51',
-                'updated_at'    => '2016-04-16 17:57:51',
-            ],
-            [
-                'id'            => '72',
-                'permission_id' => '38',
-                'role_id'       => '3',
-                'created_at'    => '2016-02-16 17:37:51',
-                'updated_at'    => '2016-04-16 17:57:51',
-            ],
-            [
-                'id'            => '73',
-                'permission_id' => '38',
-                'role_id'       => '4',
-                'created_at'    => '2016-02-16 17:37:51',
-                'updated_at'    => '2016-04-16 17:57:51',
-            ],
             //添加管理权限数据
             [
                 'id'            => '71',
@@ -916,24 +894,17 @@ class PermissionSeeder extends Seeder
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
-            [
-                'id'            => '73',
-                'permission_id' => '38',
-                'role_id'       => '4',
-                'created_at'    => '2016-02-16 17:37:51',
-                'updated_at'    => '2016-04-16 17:57:51',
-            ],
 
             //添加广告位管理权限数据
             [
-                'id'            => '74',
+                'id'            => '73',
                 'permission_id' => '39',
                 'role_id'       => '1',
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
             [
-                'id'            => '75',
+                'id'            => '74',
                 'permission_id' => '39',
                 'role_id'       => '3',
                 'created_at'    => '2016-02-16 17:37:51',
@@ -942,21 +913,21 @@ class PermissionSeeder extends Seeder
 
             //添加广告素材管理权限数据
             [
-                'id'            => '77',
+                'id'            => '75',
                 'permission_id' => '40',
                 'role_id'       => '1',
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
             [
-                'id'            => '78',
+                'id'            => '76',
                 'permission_id' => '40',
                 'role_id'       => '3',
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
             [
-                'id'            => '79',
+                'id'            => '77',
                 'permission_id' => '40',
                 'role_id'       => '4',
                 'created_at'    => '2016-02-16 17:37:51',
@@ -964,14 +935,14 @@ class PermissionSeeder extends Seeder
             ],
             //添加广告任务管理权限数据
             [
-                'id'            => '80',
+                'id'            => '78',
                 'permission_id' => '41',
                 'role_id'       => '1',
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
             [
-                'id'            => '81',
+                'id'            => '79',
                 'permission_id' => '41',
                 'role_id'       => '3',
                 'created_at'    => '2016-02-16 17:37:51',
@@ -979,21 +950,21 @@ class PermissionSeeder extends Seeder
             ],
             // 任务明细管理
             [
-                'id'            => '82',
+                'id'            => '80',
                 'permission_id' => '42',
                 'role_id'       => '1',
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
             [
-                'id'            => '83',
+                'id'            => '81',
                 'permission_id' => '42',
                 'role_id'       => '3',
                 'created_at'    => '2016-02-16 17:37:51',
                 'updated_at'    => '2016-04-16 17:57:51',
             ],
             [
-                'id'            => '84',
+                'id'            => '82',
                 'permission_id' => '42',
                 'role_id'       => '4',
                 'created_at'    => '2016-02-16 17:37:51',

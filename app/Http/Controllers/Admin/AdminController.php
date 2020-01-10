@@ -10,31 +10,52 @@ use App\Models\Question;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
 
-class AdminController extends Controller {
+class AdminController extends Controller
+{
 
-    public function __construct(Request $request){
-        $startTime = Carbon::createFromTimestamp( Carbon::today()->timestamp - 7 * 24 * 3600 );
+    public function __construct(Request $request)
+    {
+        $startTime = Carbon::createFromTimestamp(Carbon::today()->timestamp - 7 * 24 * 3600);
         /*未审核专家数*/
-        $notVerifiedData['users'] = User::where('status','=',0)->where('created_at','>',$startTime)->count();
+        $notVerifiedData['users'] = User::where('status', '=', 0)->where('created_at', '>', $startTime)->count();
         /*未审核专家数*/
-        $notVerifiedData['experts'] = Authentication::where('status','=',0)->count();
+        $notVerifiedData['experts'] = Authentication::where('status', '=', 0)->count();
         /*未审核问题数*/
-        $notVerifiedData['questions'] = Question::where('status','=',0)->count();
+        $notVerifiedData['questions'] = Question::where('status', '=', 0)->count();
         /*未审核回答数*/
-        $notVerifiedData['answers'] = Answer::where('status','=',0)->count();
+        $notVerifiedData['answers'] = Answer::where('status', '=', 0)->count();
         /*未审核文章数*/
-        $notVerifiedData['articles'] = Article::where('status','=',0)->count();
+        $notVerifiedData['articles'] = Article::where('status', '=', 0)->count();
         /*未审核评论数*/
-        $notVerifiedData['comments'] = Comment::where('status','=',0)->count();
+        $notVerifiedData['comments'] = Comment::where('status', '=', 0)->count();
         /*未审兑换数*/
-        $notVerifiedData['exchanges'] = Exchange::where('status','=',0)->count();
+        $notVerifiedData['exchanges'] = Exchange::where('status', '=', 0)->count();
 
         //当前是否开启小菜单
-        View::share('sidebar_collapse',Cookie::get('sidebar_collapse'));
-        View::share('notVerifiedData',$notVerifiedData);
+        View::share('sidebar_collapse', Cookie::get('sidebar_collapse'));
+        View::share('notVerifiedData', $notVerifiedData);
+    }
+
+    /**
+     * 获取权限
+     * @dateTime 2020-01-10
+     * @author Jingxinpo
+     * @param    string     $value [description]
+     * @return   [type]            [description]
+     */
+    public function isAdmin()
+    {
+        $role  = Auth::user()->roles->pluck('id')->first();
+        $admin = [1, 2];
+        if (in_array($role, $admin)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
