@@ -414,8 +414,8 @@ if (!function_exists('make_option_images')) {
 
     function make_option_images($type = 'all', $select_id = 0)
     {
-        $categories = app('App\Models\Adimage')->select('id', 'name')->where('disable', '1')->get();
-        return app('App\Models\Adimage')->makeOptionTree($categories, $select_id);
+        $categories = app('App\Models\AdImage')->select('id', 'name')->where('disable', '1')->get();
+        return app('App\Models\AdImage')->makeOptionTree($categories, $select_id);
     }
 
 }

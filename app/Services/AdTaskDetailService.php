@@ -94,6 +94,7 @@ class AdTaskDetailService extends BaseService
             ->join('ad_task_logs', 'ad_task_logs.id', '=', 'ad_task_log_id')
             ->where('ad_task_logs.end', '>=', date('Y-m-d H:i:s'))
             ->where('ad_task_details.disable', 1)
+            ->whereNull('ad_task_details.deleted_at')
             ->get();
         $data = [];
         foreach ($used_positons as $value) {

@@ -31,7 +31,7 @@
         <form action="{{ route('admin.account.login') }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group has-feedback @if ($errors->first('email')) has-error @endif">
-                <input type="text" name="email" class="form-control" placeholder="邮箱" value="{{ Auth::user()->email }}" readonly/>
+                <input type="text" name="email" class="form-control" placeholder="邮箱" value="" />
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback @if ($errors->first('password')) has-error @endif">

@@ -8,6 +8,7 @@
             <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu" id="global">
+
             @if(Auth()->user()->hasPermission('admin.setting.website'))
                 <li><a href="{{ route('admin.setting.website') }}"><i class="fa fa-circle-o"></i> 站点设置</a></li>
             @endif
