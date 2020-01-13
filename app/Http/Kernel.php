@@ -20,6 +20,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
         \App\Http\Middleware\BanIpCheck::class,
+        \Fruitcake\Cors\HandleCors::class,
     ];
 
     /**
@@ -52,18 +53,18 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.admin' => \App\Http\Middleware\AdminAuthenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'auth'          => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.admin'    => \App\Http\Middleware\AdminAuthenticate::class,
+        'auth.basic'    => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'      => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'ban.user' => \App\Http\Middleware\BanUserCheck::class,
-        'ban.ip' => \App\Http\Middleware\BanIpCheck::class,
-        'installer' => \App\Http\Middleware\InstallerCheck::class,
+        'can'           => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'signed'        => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'ban.user'      => \App\Http\Middleware\BanUserCheck::class,
+        'ban.ip'        => \App\Http\Middleware\BanIpCheck::class,
+        'installer'     => \App\Http\Middleware\InstallerCheck::class,
         'guide.install' => \App\Http\Middleware\RedictToInstall::class,
         'operation.log' => \App\Http\Middleware\AdminOperationLog::class,
     ];
