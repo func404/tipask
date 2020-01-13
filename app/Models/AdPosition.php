@@ -62,7 +62,7 @@ class AdPosition extends BaseModel
         foreach ($positions as $position) {
             $checked = false;
             // 有效任务明细
-            if ($task_details && (!$task_details->isEmpty()) && in_array($position->id, $task_details)) {
+            if ($task_details && in_array($position->id, $task_details)) {
                 $checked = true;
             }
 

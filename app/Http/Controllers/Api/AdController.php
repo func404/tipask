@@ -19,8 +19,12 @@ class AdController extends BaseController
      */
     public function pull(Request $request)
     {
-        $platform_host  = $request->getClientIp();
-        $platform_host  = '111.11.11.1111';
+        $platform_host = $request->input('host');
+
+        if (!$platform_host) {
+            return $this->toJson(1, ['images' => []], '请提交正确的平台信息');
+        }
+
         $ad_task_server = new AdTaskDetailService;
         $data           = $ad_task_server->pull($platform_host);
         return $this->toJson(0, ['images' => $data], '请求成功');

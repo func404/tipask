@@ -109,7 +109,8 @@ class AdTaskDetailService extends BaseService
 
         foreach ($positions as $position) {
             $result[] = [
-                'image_url' => $data[$position->id] ?? '默认图片',
+                // 后期改到配置文件里
+                'image_url' => $data[$position->id] ?? 'http://adadmin.kuaiso.com/storage/adimages/u2yiUpmblzGN6bZ0gBLD6oexWqXQVy9jmtQn43qJ.jpeg',
                 'mark'      => $position->mark,
                 'describe'  => $position->describe,
             ];

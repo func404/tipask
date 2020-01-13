@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\PlatForm;
+use App\Models\Platform;
 
 /**
  *  平台服务
@@ -16,7 +16,7 @@ class PlatFormService extends BaseService
 
     public function __construct()
     {
-        $this->model = new PlatForm;
+        $this->model = new Platform;
     }
 
     public function FunctionName($value = '')
