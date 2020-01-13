@@ -8,7 +8,8 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class AccountController extends Controller {
+class AccountController extends Controller
+{
 
     /**
      * The Guard implementation.
@@ -17,8 +18,8 @@ class AccountController extends Controller {
      */
     protected $auth;
 
-
-    public function __construct(Guard $auth){
+    public function __construct(Guard $auth)
+    {
 
         $this->auth = $auth;
 
@@ -29,34 +30,43 @@ class AccountController extends Controller {
      * @param Request $request
      * @return \Illuminate\View\View
      */
-    public function login(Request $request){
+    public function login(Request $request)
+    {
+
+        //用户认证
+        $credentials = [
+            'password' => $request->input('password'),
+        ];
+        if (is_email($request->input('email'))) {
+            $credentials['email'] = $request->input('email');
+        } else {
+            $credentials['mobile'] = $request->input('email');
+        }
+        $this->auth->attempt($credentials, $request->has('remember'));
 
         /*登录表单处理*/
-        if($request->isMethod('post'))
-        {
+        if ($request->isMethod('post')) {
 
             $request->flashOnly('email');
             /*表单数据校验*/
             $this->validate($request, [
-                'email' => 'required|email', 'password' => 'required|min:6',
-                'captcha' => 'required|captcha'
+                'email'   => 'required|email', 'password' => 'required|min:6',
+                'captcha' => 'required|captcha',
             ]);
 
             /*只接收email和password的值*/
             $credentials = [
-                'email' => $request->user()->email,
-                'password' => $request->input('password')
+                'email'    => $request->user()->email,
+                'password' => $request->input('password'),
             ];
 
             /*根据邮箱地址和密码进行认证*/
-            if ($this->auth->attempt($credentials))
-            {
-                session(['admin.login'=>true]);
+            if ($this->auth->attempt($credentials)) {
+                session(['admin.login' => true]);
                 /*认证成功后跳转到首页*/
                 return redirect()->to(route('admin.index.index'));
 
             }
-
 
             /*登录失败后跳转到首页，并提示错误信息*/
             return redirect(route('admin.account.login'))
@@ -70,22 +80,17 @@ class AccountController extends Controller {
         return view("admin.account.login");
     }
 
-
-
     /**
      * 用户登出
      */
-    public function logout(){
-
+    public function logout()
+    {
+        //用户退出
+        $this->auth->logout();
         Session::forget('admin.login');
+
         return redirect()->guest(route('admin.account.login'));
 
     }
-
-
-
-
-
-
 
 }

@@ -21,7 +21,10 @@ Route::Group(['namespace' => 'Installer', 'middleware' => 'installer'], function
     Route::get('/install/finished', ['as' => 'website.installer.finished', 'uses' => 'InstallerController@finished']);
 });
 
-Route::get('/', ['middleware' => 'guide.install', 'as' => 'website.index', 'uses' => 'IndexController@index']);
+//首页路由改为后台登录路由
+Route::get('/', ['middleware' => 'guide.install', 'as' => 'website.index', 'uses' => 'IndexController@adlogin']);
+// Route::get('/', ['middleware' => 'guide.install', 'as' => 'website.index', 'uses' => 'IndexController@index']);
+
 /*问答*/
 Route::get('/questions/{category_name?}/{filter?}', ['as' => 'website.ask', 'uses' => 'IndexController@ask'])->where(['filter' => '(newest|hottest|reward|unAnswered)']);
 
@@ -248,7 +251,7 @@ Route::Group(['namespace' => 'Shop'], function () {
 });
 
 /*后台管理部分处理*/
-Route::Group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'auth.admin', 'operation.log', 'ban.ip']], function () {
+Route::Group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['operation.log', 'ban.ip']], function () {
 
     /*用户登陆*/
     Route::match(['get', 'post'], 'login', ['as' => 'admin.account.login', 'uses' => 'AccountController@login']);

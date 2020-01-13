@@ -56,7 +56,8 @@ class UserController extends Controller
             } else {
                 $credentials['mobile'] = $request->input('email');
             }
-
+            dd(1);
+            dd($this->auth->attempt($credentials, $request->has('remember')));
             /*根据邮箱地址和密码进行认证*/
             if ($this->auth->attempt($credentials, $request->has('remember'))) {
 

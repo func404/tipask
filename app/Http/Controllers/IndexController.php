@@ -249,4 +249,15 @@ class IndexController extends Controller
         return view('theme::home.shop')->with(compact('goods', 'exchanges', 'categories', 'currentCategoryId', 'categorySlug', 'currentCategoryId', 'parentId', 'parentCategories'));
     }
 
+    /**
+     * 登录
+     * @dateTime 2020-01-13
+     * @author Jingxinpo
+     * @return   [type]     [description]
+     */
+    public function adlogin()
+    {
+        return view("admin.account.login");
+    }
+
 }

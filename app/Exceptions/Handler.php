@@ -4,10 +4,16 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
+
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
     /**
      * A list of the exception types that are not reported.
      *
@@ -52,9 +58,10 @@ class Handler extends ExceptionHandler
 
     protected function unauthenticated($request, AuthenticationException $exception)
     {
+        // $this->userLogin($request);
         return $request->expectsJson()
-            ? response()->json(['code'=>401,'message' => '您还未登录，需要登录后才能进行该操作'], 200)
-            : redirect()->guest(route('auth.user.login'));
+        ? response()->json(['code' => 401, 'message' => '您还未登录，需要登录后才能进行该操作'], 200)
+        : redirect()->guest(route('admin.account.login'));
     }
 
 }

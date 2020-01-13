@@ -13,27 +13,26 @@
 
     <!-- Main content -->
     <section class="content">
-        <div class="row">
+       <!--  <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-aqua"><i class="fa fa-users" aria-hidden="true"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">注册用户数</span>
                         <span class="info-box-number">{{ $totalUserNum }}</span>
-                    </div><!-- /.info-box-content -->
-                </div><!-- /.info-box -->
-            </div><!-- /.col -->
+                    </div>
+                </div>
+            </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-red"><i class="fa fa-question-circle"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">问题总数</span>
                         <span class="info-box-number">{{ $totalQuestionNum }}</span>
-                    </div><!-- /.info-box-content -->
-                </div><!-- /.info-box -->
-            </div><!-- /.col -->
+                    </div>
+                </div>
+            </div>
 
-            <!-- fix for small devices only -->
             <div class="clearfix visible-sm-block"></div>
 
             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -42,20 +41,20 @@
                     <div class="info-box-content">
                         <span class="info-box-text">文章总数</span>
                         <span class="info-box-number">{{ $totalArticleNum }}</span>
-                    </div><!-- /.info-box-content -->
-                </div><!-- /.info-box -->
-            </div><!-- /.col -->
+                    </div>
+                </div>
+            </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-yellow"><i class="fa fa-comment-o" aria-hidden="true"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">回答总数</span>
                         <span class="info-box-number">{{ $totalAnswerNum }}</span>
-                    </div><!-- /.info-box-content -->
-                </div><!-- /.info-box -->
-            </div><!-- /.col -->
-        </div>
-        <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div> -->
+       <!--  <div class="row">
             <div class="col-md-12">
                 <div class="box box-default">
                     <div class="box-header with-border">
@@ -96,7 +95,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-default">

@@ -78,4 +78,7 @@ Route::Group([
         //资源路由，自动加载模板及控制器中的方法
         Route::resource('adtaskdetail', 'AdTaskDetailController', ['as' => 'admin', 'only' => ['index', 'edit']]);
     });
+
 });
+
+Route::get('adlogin', ['uses' => 'IndexController@adlogin']);

@@ -1,6 +1,6 @@
 <ul class="sidebar-menu" id="root_menu">
     <li class="header">管理菜单</li>
-    <li><a href="{{ route('admin.index.index') }}"><i class="fa fa-dashboard"></i> <span>首页</span> </a></li>
+    <!-- <li><a href="{{ route('admin.index.index') }}"><i class="fa fa-dashboard"></i> <span>首页</span> </a></li> -->
 
     <li class="treeview">
         <a href="#">
@@ -96,7 +96,7 @@
         </ul>
     </li>
 
-    <li class="treeview">
+ <!--    <li class="treeview">
         <a href="#">
             <i class="fa fa-comments-o"></i> <span>内容</span>
             <i class="fa fa-angle-left pull-right"></i>
@@ -124,9 +124,9 @@
                 <li><a href="{{ route('admin.category.index') }}"><i class="fa fa-circle-o"></i> 分类管理</a></li>
             @endif
         </ul>
-    </li>
+    </li> -->
 
-    <li class="treeview">
+  <!--   <li class="treeview">
         <a href="#">
             <i class="fa fa-cutlery"></i> <span>运营</span>
             <i class="fa fa-angle-left pull-right"></i>
@@ -151,9 +151,9 @@
                 <li><a href="{{ route('admin.report.index') }}"><i class="fa fa-circle-o"></i> 举报管理</a></li>
             @endif
         </ul>
-    </li>
+    </li> -->
 
-    <li class="treeview">
+ <!--    <li class="treeview">
         <a href="#">
             <i class="fa fa-database"></i> <span>财务</span>
             <i class="fa fa-angle-left pull-right"></i>
@@ -164,9 +164,9 @@
                 <li><a href="{{ route('admin.credit.create') }}"><i class="fa fa-circle-o"></i> 积分充值</a></li>
             @endif
         </ul>
-    </li>
+    </li> -->
 
-    <li class="treeview">
+ <!--    <li class="treeview">
         <a href="#">
             <i class="fa fa-recycle"></i> <span>系统整合</span>
             <i class="fa fa-angle-left pull-right"></i>
@@ -185,7 +185,7 @@
                 <li><a href="{{ route('admin.setting.sms') }}"><i class="fa fa-circle-o"></i>短信整合</a></li>
             @endif
         </ul>
-    </li>
+    </li> -->
 
 
     <li class="header">常用菜单</li>
@@ -194,6 +194,6 @@
     <li><a href="{{ route('admin.tool.clearCache') }}"><i class="fa fa-circle-o text-info"></i>
             <span>清空缓存</span></a>
     </li>
-    <li><a href="http://www.tipask.com" target="_blank"><i class="fa fa-circle-o text-yellow"></i> <span>官方求助</span></a>
+    <!-- <li><a href="http://www.tipask.com" target="_blank"><i class="fa fa-circle-o text-yellow"></i> <span>官方求助</span></a> -->
     </li>
 </ul>
