@@ -14,6 +14,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'wechat/callback',
         'alipay/callback',
-        'api/*'
+        'api/*',
     ];
 }
